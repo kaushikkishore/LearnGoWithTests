@@ -1,0 +1,5 @@
+// Things to install for the GO 
+
+goimports 
+gocode 
+gopls 
