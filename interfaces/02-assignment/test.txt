@@ -1,0 +1,3 @@
+THis is some text file 
+Lorem ipsum  text goes here 
+Please read this file 
