@@ -1,0 +1,11 @@
+proto < ./invoicer.proto
+
+GRPC localhost:8000/invoicer/create
+{
+  "from": "Kaushik"
+}
+
+GRPC localhost:8000/invoicer/logging
+{
+  "name":"clouwatch"
+}
