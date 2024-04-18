@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
+	"time"
 )
 
 func TestSum(t *testing.T) {
@@ -62,5 +64,20 @@ func TestSumAllTrails(t *testing.T) {
 
 		checkSums(t, got, want)
 	})
+
+}
+
+func TestTimeQuery(t *testing.T) {
+	currentUTC := time.Now().UTC()
+	startTime := time.Date(currentUTC.Year(), currentUTC.Month(), currentUTC.Day(), 0, 0, 0, 0, currentUTC.UTC().Location()).AddDate(0, 0, -60)
+	endTime := startTime.AddDate(0, 0, 5)
+	current := time.Date(currentUTC.Year(), currentUTC.Month(), currentUTC.Day(), 0, 0, 0, 0, currentUTC.UTC().Location())
+
+	for startTime.Before(current) {
+		query := fmt.Sprintf(`select from body where time between  '%s' and '%s'`, startTime.Format("2006-01-02 15:04:05"), endTime.Format("2006-01-02 15:04:05"))
+		fmt.Println(query)
+		startTime = endTime
+		endTime = startTime.AddDate(0, 0, 5)
+	}
 
 }
